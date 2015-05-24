@@ -12,6 +12,7 @@ import java.util.List;
 public class UserVO {
 
 	Integer userId;
+	
 	String firstName;
 	String lastName;
 	Boolean isOwner;
