@@ -1,0 +1,52 @@
+<div class="container">
+	<h3>Create a new user</h3>
+
+	<form name="userCreateForm" novalidate="novalidate" class="form-horizontal">
+		<div class="control-group">
+			<label class="control-label" for="firstName">First name:</label>
+
+			<div class="controls">
+				<input type="text" name="firstName"  ng-model="user.firstName" required placeholder="First name" />
+			</div>
+			<div class="controls" ng-show="userCreateForm.$submitted || userCreateForm.firstName.$invalid">
+				<div ng-show="userCreateForm.firstName.$error.required">First name is required</div>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="lastName">Last name:</label>
+
+			<div class="controls">
+				<input type="text" name="lastName" ng-model="user.lastName" required="" placeholder="Last name" />
+			</div>
+			<div class="controls" ng-show="userCreateForm.$submitted || userCreateForm.lastName.$invalid">
+				<div ng-show="userCreateForm.lastName.$error.required">Last name is required</div>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="isOwner">Is Owner:</label>
+
+			<div class="controls">
+				<input type="checkbox" id="isOwner" ng-model="user.isOwner" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="isCoOwner">Is CoOwner:</label>
+
+			<div class="controls">
+				<input type="checkbox" id="isCoOwner" ng-model="user.isCoOwner" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="isActive">Is Active:</label>
+
+			<div class="controls">
+				<input type="checkbox" id="isActive" ng-model="user.isActive" ng-checked="true"/>
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<a ng-click="createNewUser(user)" class="btn btn-small btn-primary">Create</a>
+			</div>
+		</div>
+	</form>
+</div>

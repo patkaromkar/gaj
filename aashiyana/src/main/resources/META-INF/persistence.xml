@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	version="1.0">
+	<persistence-unit name="personPersistenceUnit"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>com.gg.aashiyana.domain.User</class>
+		<class>com.gg.aashiyana.domain.Unit</class>
+		<class>com.gg.aashiyana.domain.UnitUserXref</class>
+		<class>com.gg.aashiyana.domain.ContactInfo</class>
+	</persistence-unit>
+</persistence>

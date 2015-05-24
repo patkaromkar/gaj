@@ -1,0 +1,86 @@
+<div class="container">
+	<h3>Maintain user {{user.firstName + ' ' + user.lastName}}</h3>
+
+	<form name="form" novalidate="novalidate" class="form-horizontal">
+		<div class="control-group">
+			<label class="control-label" for="firstName">First name:</label>
+
+			<div class="controls">
+				<input type="text" id="firstName"  ng-model="user.firstName" required="" placeholder="First name" />
+			</div>
+			<div class="controls" ng-show="form.$submitted || form.firstName.$touched">
+				<div ng-show="form.firstName.$error.required">First name is required</div>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="lastName">Last name:</label>
+
+			<div class="controls">
+				<input type="text" id="lastName" ng-model="user.lastName" required="" placeholder="Last name" />
+			</div>
+			<div class="controls" ng-show="form.$submitted || form.lastName.$touched">
+				<div ng-show="form.lastName.$error.required">Last name is required</div>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="isOwner">Is Owner:</label>
+
+			<div class="controls">
+				<input type="checkbox" id="isOwner" ng-model="user.isOwner" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="isCoOwner">Is CoOwner:</label>
+
+			<div class="controls">
+				<input type="checkbox" id="isCoOwner" ng-model="user.isCoOwner" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="isActive">Is Active:</label>
+
+			<div class="controls">
+				<input type="checkbox" id="isActive" ng-model="user.isActive" />
+			</div>
+		</div>
+		
+		<div class="control-group">
+		    <div class="col-lg-12 fade-in tada" style="padding-top:10px">
+		        <table ng-table="tableParams" class="display table table-striped table-bordered">
+		        	<thead>
+		        		<tr>
+		        			<th>Contact Type</th>
+							<th>Value</th>
+		        		</tr>
+		        	</thead>
+		        	<tbody>
+			            <tr ng-repeat="contactInfo in user.contactInfos">
+			                <td>
+								<select class="form-control" ng-model="contactInfo.infoType">
+								    <option value="PHONE">Phone</option>
+								    <option value="EMAIL">Email</option>
+								</select>
+			                </td>
+			                <td>
+			                    <input type="text" ng-model="contactInfo.value" />
+			                </td>
+			            </tr>
+		            </tbody>
+		        </table>
+		    </div>
+		    <div class="col-lg-12">
+		       <div class="pull-right">
+		            <input type="submit" ng-click="addFormField()" class="btn btn-default" value="Add" />
+		        </div>
+		    </div>
+		</div>
+		
+		
+		
+		<div class="control-group">
+			<div class="controls">
+				<a ng-click="updateUser()" class="btn btn-small btn-primary">Update</a>
+			</div>
+		</div>
+	</form>
+</div>

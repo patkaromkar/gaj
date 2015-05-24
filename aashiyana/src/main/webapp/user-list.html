@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<body ng-app="myApp" ng-controller="userCtrl">
+
+<div class="container">
+
+<h3>Users</h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><a href="#" >Sr. No</a></th>
+      <th><a href="#" ng-click="predicate = 'flatNo'; reverse=!reverse">Flat no</a></th>
+      <th><a href="#" ng-click="predicate = 'fName'; reverse=!reverse">Owner</a></th>
+      <th><a href="#" ng-click="predicate = 'phone'; reverse=!reverse">Contact Phone</a></th>
+      <th><a href="#" ng-click="predicate = 'email'; reverse=!reverse">Contact Email</a></th>
+      <th><a href="#" ng-click="predicate = 'parking'; reverse=!reverse">Parking</a></th>
+      <th><a href="#">Edit</a></th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="user in users | orderBy:predicate:reverse">
+      <td>{{ $index + 1 }} </td>
+      <td>{{ user.flatNo }}</td>
+      <td>{{ user.fName }} {{ user.lName }}</td>
+      <td>{{ user.phone }}</td>
+      <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+      <td>{{ user.parking }}</td>
+      <td>
+        <button class="btn" ng-click="editUser(user.id)">
+          <span class="glyphicon glyphicon-pencil"></span>  Edit
+        </button>
+      </td>
+      
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+<script>
+angular.module('myApp', []).controller('userCtrl', function($scope) {
+$scope.fName = '';
+$scope.lName = '';
+$scope.passw1 = '';
+$scope.passw2 = '';
+$scope.users = [
+{id:1, fName:'Omkar',  lName:"Patkar", flatNo: "J505", phone: "9619571199", email: "patkaromkar@gmail.com", parking: "j185" },
+{id:2, fName:'Umesh',   lName:"Kamat", flatNo: "J605", phone: "8787988900", email: "umeshgkamat@gmail.com", parking: "j78" },
+{id:3, fName:'Sohan',   lName:"Bhavsaroo", flatNo: "J603", phone: "6279770989", email: "sohanbvr@gmail.com", parking: "j-901" }
+];
+
+//$scope.predicate = 'fName';
+$scope.edit = true;
+$scope.error = false;
+$scope.incomplete = false; 
+$scope.editUser = function(id) {
+  if (id == 'new') {
+    $scope.edit = true;
+    $scope.incomplete = true;
+    $scope.fName = '';
+    $scope.lName = '';
+    } else {
+    $scope.edit = false;
+    $scope.fName = $scope.users[id-1].fName;
+    $scope.lName = $scope.users[id-1].lName; 
+  }
+};
+
+
+})
+</script>
+
+</body>
+</html>
